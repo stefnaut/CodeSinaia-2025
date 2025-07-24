@@ -24,7 +24,7 @@ RULES = [
     {
         "keywords": ["what", "you", "eat", "like"],
         "required": ["eat"],
-        "response": get_custom_response("eat")
+        "response": "eat"
     },
     {
         "keywords": ["bye", "goodbye", "see"],
@@ -97,10 +97,14 @@ def check_all_messages(message):
         # actualizează best_response și highest_prob
         if mesprob > highest_prob:
             highest_prob = mesprob
-            best_response = rule['response']
-        
+            best_response = rule["response"]
+
+    if best_response == "eat":
+        return get_custom_response("eat")
+    else:
+        return best_response if best_response is not None else unknown()
     #TODO: returneaza raspunsul, fie cel de eroare, fie cel gasit 
-    return best_response if best_response is not None else unknown()
+    
 
 def get_response(user_input):
     None
