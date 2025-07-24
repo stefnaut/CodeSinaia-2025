@@ -1,0 +1,42 @@
+[
+  {
+    "sender": "You",
+    "text": "ok"
+  },
+  {
+    "sender": "Bot",
+    "text": "I'm not sure I understand."
+  },
+  {
+    "sender": "You",
+    "text": "good"
+  },
+  {
+    "sender": "Bot",
+    "text": "What does that mean? 🤔"
+  },
+  {
+    "sender": "You",
+    "text": "lol"
+  },
+  {
+    "sender": "Bot",
+    "text": "I'm not sure I understand."
+  },
+  {
+    "sender": "You",
+    "text": "dumbass"
+  },
+  {
+    "sender": "Bot",
+    "text": "Hmm... I didn't quite get that."
+  },
+  {
+    "sender": "You",
+    "text": "hwo are you"
+  },
+  {
+    "sender": "Bot",
+    "text": "I'm doing fine, and you?"
+  }
+]

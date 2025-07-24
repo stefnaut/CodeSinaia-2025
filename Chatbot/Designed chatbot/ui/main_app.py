@@ -30,11 +30,11 @@ def open_app():
     
     #TODO: de ce dă eroare? REZOLVĂ
     # upper left image logo
-    try:
-        root.iconbitmap("code_sinaia_logo.ico")  # Ensure you have a code_sinaia_logo.ico file in the assets directory
-    except tk.TclError:
-        messagebox.showerror("Error", "Icon file not found. Please ensure 'code_sinaia_logo.ico' is in the assets directory.")
-        return
+    # try:
+    #     root.iconbitmap(relative_to_assets("code_sinaia_logo.ico")) # Ensure you have a code_sinaia_logo.ico file in the assets directory
+    # except tk.TclError:
+    #     messagebox.showerror("Error", "Icon file not found. Please ensure 'code_sinaia_logo.ico' is in the assets directory.")
+    #     return
     
     
     window_width = 800
@@ -58,16 +58,191 @@ def open_app():
         save_chat(chat_log)
         
     #TODO: insert the code here
+    root.configure(bg = "#D20C0C")
+
+
+    canvas = Canvas(
+        root,
+        bg = "#D20C0C",
+        height = 600,
+        width = 800,
+        bd = 0,
+        highlightthickness = 0,
+        relief = "ridge"
+    )
+
+    canvas.place(x = 0, y = 0)
+    canvas.create_rectangle(
+        30.0,
+        465.0,
+        770.0,
+        505.0,
+        fill="#880D0D",
+        outline="")
+
+    canvas.create_rectangle(
+        30.0,
+        74.0,
+        770.0,
+        427.0,
+        fill="#880D0D",
+        outline="")
+
+    button_image_trimite= PhotoImage(
+        file=relative_to_assets("button_trimite.png"))
+    button_trimite = Button(
+        image=button_image_trimite,
+        borderwidth=0,
+        highlightthickness=0,
+        command=on_send,
+        relief="flat",
+        background="#D20C0C",
+        activebackground="#D20C0C"
+    )
+    button_trimite.place(
+        x=30.0,
+        y=516.0,
+        width=130.0,
+        height=40.0
+    )
+
+    button_image_save = PhotoImage(
+        file=relative_to_assets("button_save.png"))
+    button_save = Button(
+        image=button_image_save,
+        borderwidth=0,
+        highlightthickness=0,
+        command=on_save,
+        relief="flat",
+        background="#D20C0C",
+        activebackground="#D20C0C"
+    )
+    button_save.place(
+        x=639.0,
+        y=516.0,
+        width=130.0,
+        height=40.0
+    )
+
+    button_image_load = PhotoImage(
+        file=relative_to_assets("button_load.png"))
+    button_load = Button(
+        image=button_image_load,
+        borderwidth=0,
+        highlightthickness=0,
+        command=on_load,
+        relief="flat",
+        background="#D20C0C",
+        activebackground="#D20C0C"
+    )
+    button_load.place(
+        x=436.0,
+        y=517.0,
+        width=130.0,
+        height=40.0
+    )
+
+    button_image_clear = PhotoImage(
+        file=relative_to_assets("button_clear.png"))
+    button_clear = Button(
+        image=button_image_clear,
+        borderwidth=0,
+        highlightthickness=0,
+        command=on_clear,
+        relief="flat",
+        background="#D20C0C",
+        activebackground="#D20C0C"
+    )
+    button_clear.place(
+        x=233.0,
+        y=516.0,
+        width=130.0,
+        height=40.0
+    )
+
+    canvas.create_text(
+        260.0,
+        16.999999999999993,
+        anchor="nw",
+        text="MY CHATBOT APP",
+        fill="#FFFFFF",
+        font=("Inter", 32 * -1)
+    )
+
+    button_image_github = PhotoImage(
+        file=relative_to_assets("button_github.png"))
+    button_github = Button(
+        image=button_image_github,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: print("button_5 clicked"),
+        relief="flat",
+        background="#D20C0C",
+        activebackground="#D20C0C"
+    )
+    button_github.place(
+        x=709.0,
+        y=575.0,
+        width=61.0,
+        height=20.0
+    )
+
+    canvas.create_rectangle(
+        -4.0,
+        562.0,
+        800.0,
+        566.0,
+        fill="#880E0E",
+        outline="")
+
+        # ...existing code...
     
+    canvas.create_text(
+        323.0,
+        575.0,
+        anchor="nw",
+        text="™CodeSinaia 2025",
+        fill="#FFFFFF",
+        font=("Inter", 14 * -1)
+    )
+
+    canvas.create_text(
+        30.0,
+        575.0,
+        anchor="nw",
+        text="©2025 Inproted",
+        fill="#FFFFFF",
+        font=("Inter", 14 * -1)
+    )
     
     # Chat log (Text widget)
-    chat_log = Text(root, bg="#C5C5C5", bd=0, state=tk.DISABLED, wrap="word")
-    chat_log.place(x=30.0, y=73.0, width=740.0, height=361.0)
+    chat_log = Text(root, bg="#880D0D", bd=0, state=tk.DISABLED, wrap="word")
+    chat_log.place(x=30.0, y=74.0, width=740.0, height=353.0)
 
     # Entry box
     entry = Entry(root, bd=0)
     entry.place(x=30.0, y=465.0, width=740.0, height=40.0)
-    entry.configure(bg="#C5C5C5", font=("Inter", 14 * -1), highlightthickness=0, relief="flat")
+    entry.configure(bg="#880E0E", font=("Inter", 14 * -1), highlightthickness=0, relief="flat")
+
+    root.bind('<Return>', lambda event=None: on_send()) # Send message on Enter key press
+    root.resizable(False, False)
+    root.mainloop()
+
+    
+    # Chat log (Text widget)
+    chat_log = Text(root, bg="#880D0D", bd=0, state=tk.DISABLED, wrap="word")
+    chat_log.place(x=30.0, y=74.0, width=740.0, height=353.0)
+    # canvas.create_rectangle(
+    #     30.0,
+    #     74.0,
+    #     770.0,
+    #     427.0,
+    #     fill="#880D0D",
+    #     outline="")
+    # Entry box
+    entry = Entry(root, bd=0)
+    entry.place(x=30.0, y=465.0, width=740.0, height=40.0)
+    entry.configure(bg="#880D0D", font=("Inter", 14 * -1), highlightthickness=0, relief="flat")
     
     
     root.bind('<Return>', lambda event=None: on_send()) # Send message on Enter key press
